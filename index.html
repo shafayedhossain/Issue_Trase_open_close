@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues Traker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <!-- link UI -->
+     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+ <!-- Google font  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ <!-- Font Awasome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    *{
+          font-family: "Geist", sans-serif;
+    }
+</style>
+</head>
+<body class="min-h-screen max-w-md bg-base-100 mx-auto shadow rounded-md" >
+           <div class="logo w-32 opacity-100 text-[#1F2937] mx-auto pt-32">
+               <img src="./assets/github-logo.png" alt="">
+           </div>
+           <h1 class="text-4xl pt-4 font-bold mx-auto text-center">GitHub Issues Tracker</h1>
+           <p class="text-gray-500 text-center">Sign in to manage your issues</p>
+
+           <div class="form pt-10">
+
+    <div class="card bg-base-100 w-full max-w-sm shrink-0  mx-auto">
+      <div class="card-body">
+        <fieldset class="fieldset">
+          <label class="label" >Username</label>
+          <input type="email" id="input-user" class="input" maxlength="5" minlength="5" placeholder="Enter Username" />
+          <label class="label">Password</label>
+          
+          <input type="password" id="input-pin" maxlength="8" minlength="8" class="input" placeholder="Enter Password" />
+          <div><a class="link link-hover">Forgot password?</a></div>
+          <button id="login-btn" class="btn btn-primary mt-4">Login</button>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+           </div>
+
+           <script src="./script.js"></script>
+</body>
+</html>
