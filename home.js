@@ -7,6 +7,8 @@ const updateIssueCount = (count) => {
     document.getElementById("issue-count").innerText = `${count} Issues`;
 };
 
+
+
 const manageSpinner = (manage) =>{
     if(manage=== true){
         document.getElementById("spinner").classList.remove("hidden");
@@ -36,6 +38,7 @@ openBtn.addEventListener("click", () => {
 const openIssues = allIssues.filter(issue => issue.status === "open");
 displayLesson(openIssues);
     updateIssueCount(openIssues.length);
+  
 });
 
 closeBtn.addEventListener("click", () => {
