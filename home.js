@@ -3,9 +3,7 @@ const allBtn =document.getElementById("all-btn");
 const closeBtn =document.getElementById("close-btn");
 let allIssues = [];
 
-const updateIssueCount = (count) => {
-    document.getElementById("issue-count").innerText = `${count} Issues`;
-};
+
 
 
 
@@ -33,27 +31,6 @@ const loadButton = () =>{
     });
     
 };
-openBtn.addEventListener("click", () => {
-
-const openIssues = allIssues.filter(issue => issue.status === "open");
-displayLesson(openIssues);
-    updateIssueCount(openIssues.length);
-  
-});
-
-closeBtn.addEventListener("click", () => {
-    const closedIssues = allIssues.filter(issue => issue.status === "closed");
-displayLesson(closedIssues);
-    updateIssueCount(closedIssues.length);
-
-
-});
-allBtn.addEventListener("click", () => {
-    displayLesson(allIssues);
-        updateIssueCount(allIssues.length);
-});
-
-
 
 const displayLesson =(lessons) =>{
     
@@ -99,6 +76,35 @@ const displayLesson =(lessons) =>{
     manageSpinner(false);
 };
 
+const updateIssueCount = (count) => {
+    document.getElementById("issue-count").innerText = `${count} Issues`;
+};
+
+
+openBtn.addEventListener("click", () => {
+
+const openIssues = allIssues.filter(issue => issue.status === "open");
+displayLesson(openIssues);
+    updateIssueCount(openIssues.length);
+  
+});
+
+closeBtn.addEventListener("click", () => {
+    const closedIssues = allIssues.filter(issue => issue.status === "closed");
+displayLesson(closedIssues);
+    updateIssueCount(closedIssues.length);
+
+
+});
+allBtn.addEventListener("click", () => {
+    displayLesson(allIssues);
+        updateIssueCount(allIssues.length);
+});
+
+
+
+
+
 const loadWord= async (id)=>{
     manageSpinner(false)
  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
@@ -124,8 +130,8 @@ const displayWord = (word) =>{
           ${word.labels.map(label=> `<p class=" W-[60px] h-[24px] p-1   bg-yellow-300 rounded-md text-red-500
           text-center text-[12px] font-medium">${label}</p>` ).join('')} 
        </div>
-          <p class="line-clamp-2">${word.description}</p>
-    <div class="flex justify-around p-3 bg-gray-300 ">
+          <p class="line-clamp-2 text-gray-500">${word.description}</p>
+    <div class="flex justify-around p-4 bg-gray-100 rounded-md">
         <div>
             <p><span class="text-gray-500">Assignee: </span><br> <span class="font-bold">${word.assignee}</span></p>
         </div>
@@ -139,6 +145,23 @@ const displayWord = (word) =>{
 }
    
 loadButton();
+
+
+document.getElementById("btn-search").addEventListener("click", () => {
+
+    const input = document.getElementById("input-search");
+    const searchValue = input.value.trim().toLowerCase();
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then(data => {
+
+            displayLesson(data.data);
+            updateIssueCount(data.data.length);
+
+        });
+
+});
 
 allBtn.addEventListener("click", () => {
     setActiveButton("all-btn");
@@ -166,7 +189,8 @@ function setActiveButton(id) {
     activeBtn.classList.remove('bg-gray-300', 'text-black');
     activeBtn.classList.add('bg-primary', 'text-white');
 }
-    
+  
+
 
 
 
